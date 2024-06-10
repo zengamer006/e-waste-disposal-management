@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Gamja Flower:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Gafata:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu Mono:wght@700&display=swap"
+    />
+
+    <style>
+        .icon {
+  position: absolute;
+  top: 260px;
+  left: 24px;
+  width: 1416px;
+  height: 594px;
+  object-fit: cover;
+}
+.disposal-location,
+.make-your-appointment {
+  position: absolute;
+  top: 197px;
+  left: 74px;
+  font-size: 100px;
+  -webkit-text-stroke: 2px #000;
+}
+.make-your-appointment {
+  top: 1888px;
+  font-size: 60px;
+}
+.where-to-dipose-child {
+  position: absolute;
+  top: 2853px;
+  left: 0;
+  background-color: #282828;
+  width: 1513px;
+  height: 413px;
+}
+.vit-chennai {
+  position: absolute;
+  top: 3030px;
+  left: 976px;
+  font-size: var(--font-size-11xl);
+  line-height: 29px;
+  font-family: var(--font-gafata);
+  color: var(--color-lightgray);
+  display: inline-block;
+  width: 385px;
+  height: 176px;
+  cursor: pointer;
+}
+.e-wate-recycling,
+.get-in-touch,
+.our-projects {
+  position: absolute;
+  top: 2914px;
+  left: 322px;
+  font-size: var(--font-size-31xl);
+  color: var(--color-white);
+  display: inline-block;
+  width: 286px;
+  height: 49px;
+}
+.e-wate-recycling,
+.get-in-touch {
+  left: 887px;
+  width: 282px;
+}
+.e-wate-recycling {
+  top: 3030px;
+  left: 322px;
+  font-size: var(--font-size-11xl);
+  line-height: 10px;
+  font-family: var(--font-gafata);
+  color: var(--color-lightgray);
+  width: 385px;
+  height: 176px;
+  cursor: pointer;
+}
+.image-1-icon {
+  position: absolute;
+  top: 2040px;
+  left: 373px;
+  width: 1132px;
+  height: 795px;
+  object-fit: cover;
+}
+.email-us-to {
+  position: absolute;
+  top: 2740px;
+  left: 439px;
+  font-size: var(--font-size-21xl);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 662px;
+  height: 104px;
+  -webkit-text-stroke: 1px #000;
+}
+.please-include-the {
+  margin: 0;
+}
+.name {
+  margin-bottom: 0;
+}
+.name-contact-number-address-ty {
+  margin: 0;
+  padding-left: 53px;
+}
+.please-include-the-container1 {
+  line-break: anywhere;
+  width: 100%;
+}
+.email-md17ashikgmailcom,
+.please-include-the-container {
+  position: absolute;
+  left: 74px;
+  display: flex;
+  align-items: center;
+}
+.please-include-the-container {
+  top: 2097px;
+  font-size: var(--font-inherit);
+  font-family: var(--font-inherit);
+  width: 1012px;
+  height: 509px;
+}
+.email-md17ashikgmailcom {
+  top: 1981px;
+  font-size: var(--font-size-31xl);
+  width: 855px;
+  height: 118px;
+}
+.group-child,
+.where-to-dipose-item {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  background-color: var(--color-white);
+  width: 1440px;
+  height: 74px;
+}
+.group-child {
+  top: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-silver);
+  width: 97px;
+  height: 32px;
+}
+.rewards {
+  position: absolute;
+  top: 3px;
+  left: 11px;
+  display: inline-block;
+  width: 86px;
+  height: 30px;
+}
+.rectangle-parent,
+.where-to-dipose-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 97px;
+  height: 33px;
+}
+.where-to-dipose-inner {
+  top: 23px;
+  left: 1056px;
+  font-family: var(--font-ubuntu-mono);
+}
+.logo-1-icon {
+  position: absolute;
+  top: 11px;
+  left: 29px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+.e-waste-facility-locator {
+  position: absolute;
+  top: 17px;
+  left: 103px;
+  font-size: 32px;
+  display: inline-block;
+  font-family: var(--font-ubuntu-mono);
+  width: 392px;
+}
+.group-item,
+.locator {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.group-item {
+  border-radius: var(--br-3xs);
+  background-color: var(--color-silver);
+  width: 90px;
+  height: 30px;
+}
+.locator {
+  display: inline-block;
+  width: 94px;
+}
+.locator-wrapper,
+.rectangle-group {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 94px;
+  height: 24px;
+}
+.rectangle-group {
+  top: 24px;
+  left: 1182px;
+  width: 98px;
+  height: 30px;
+  font-family: var(--font-ubuntu-mono);
+}
+.group-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-silver);
+  width: 92px;
+  height: 30px;
+}
+.contact,
+.contact-wrapper {
+  position: absolute;
+  top: 0;
+  width: 95px;
+  height: 32px;
+}
+.contact {
+  left: 0;
+  display: inline-block;
+}
+.contact-wrapper {
+  left: 4px;
+}
+.rectangle-container {
+  top: 0;
+  left: 0;
+  width: 99px;
+}
+.group-div,
+.rectangle-container,
+.rectangle-div {
+  position: absolute;
+  height: 32px;
+}
+.group-div {
+  top: 24px;
+  left: 928px;
+  width: 99px;
+  font-family: var(--font-ubuntu-mono);
+}
+.rectangle-div {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-silver);
+  width: 110px;
+}
+.about-us {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  display: inline-block;
+  width: 103.92px;
+  height: 21.75px;
+}
+.rectangle-parent1,
+.where-to-dipose-inner1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 32px;
+}
+.where-to-dipose-inner1 {
+  top: 22px;
+  left: 1302px;
+  font-family: var(--font-ubuntu-mono);
+}
+.home-wrapper {
+  position: absolute;
+  top: 2px;
+  left: 21px;
+  width: 95px;
+  height: 32px;
+}
+.rectangle-parent2,
+.where-to-dipose-inner2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 116px;
+  height: 34px;
+}
+.where-to-dipose-inner2 {
+  top: 24px;
+  left: 790px;
+  font-family: var(--font-ubuntu-mono);
+}
+.where-to-dipose-child1 {
+  position: absolute;
+  top: 1052px;
+  left: 315px;
+  background-color: #d9d9d9;
+  width: 800px;
+  height: 600px;
+}
+.where-to-dipose {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 3266px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-black);
+  font-family: var(--font-gamja-flower);
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-ubuntu-mono: "Ubuntu Mono";
+  --font-gamja-flower: "Gamja Flower";
+  --font-inherit: inherit;
+  --font-gafata: Gafata;
+
+  /* font sizes */
+  --font-size-5xl: 24px;
+  --font-size-31xl: 50px;
+  --font-size-21xl: 40px;
+  --font-size-11xl: 30px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-silver: #d4c6c6;
+  --color-lightgray: #cdcdcd;
+
+  /* Border radiuses */
+  --br-3xs: 10px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="where-to-dipose">
+      <img class="icon" alt="" src="D:\Users\Nvarma\Documents\Desktop\sih\vehicle.jpg" />
+
+      <div class="disposal-location" data-scroll-to="dISPOSALLOCATIONText">
+        DISPOSAL LOCATION
+      </div>
+      <div class="make-your-appointment">
+        Make your appointment through email
+      </div>
+      <div class="where-to-dipose-child"></div>
+      <div class="vit-chennai" id="vITCHENNAIText">VIT CHENNAI</div>
+      <div class="our-projects">Our Projects</div>
+      <div class="get-in-touch">Get In Touch</div>
+      <div class="e-wate-recycling" id="eWateRecyclingText">
+        e-Wate Recycling
+      </div>
+      <img class="image-1-icon" alt="" src="D:\Users\Nvarma\Documents\Desktop\sih\card.jpg" />
+
+      <div class="email-us-to">Email us to make an appointment !</div>
+      <div class="please-include-the-container">
+        <span class="please-include-the-container1">
+          <p class="please-include-the">
+            Please include the information below in your email
+          </p>
+          <p class="please-include-the">&nbsp;</p>
+          <ul class="name-contact-number-address-ty">
+            <li class="name">Name</li>
+            <li class="name">Contact number</li>
+            <li class="name">Address</li>
+            <li class="name">Type of E-waste</li>
+            <li class="name">Date and time</li>
+            <li>Pick up / Drop off</li>
+          </ul>
+        </span>
+      </div>
+      <div class="email-md17ashikgmailcom">Email : ewastelocator@gmail.com</div>
+      <div class="where-to-dipose-item"></div>
+      <div class="where-to-dipose-inner">
+        <div class="rectangle-parent">
+          <div class="group-child"></div>
+          <a href="file:///C:/Users/kamal/Desktop/sih/rewards.html"><b class="rewards">Rewards</b></a>
+          
+        </div>
+      </div>
+      <img class="logo-1-icon" alt="" src="C:\Users\kamal\Desktop\sih\logo.jpg" />
+
+      <b class="e-waste-facility-locator">E-Waste Facility Locator</b>
+      <div class="rectangle-group">
+        <div class="group-item"></div>
+        <div class="locator-wrapper">
+          <a href="file:///C:/Users/kamal/Desktop/sih/E-waste-Locator.html"><b class="locator">Locator</b></a>
+        </div>
+      </div>
+      <div class="group-div">
+        <div class="rectangle-container">
+          <div class="group-inner"></div>
+          <div class="contact-wrapper">
+            <b class="contact">
+              <a href="file:///C:/Users/kamal/Desktop/sih/Contacts.html"><p class="please-include-the">Contact</p></a>
+            </b>
+          </div>
+        </div>
+      </div>
+      <div class="where-to-dipose-inner1">
+        <div class="rectangle-parent1">
+          <div class="rectangle-div"></div>
+         <a href="file:///C:/Users/kamal/Desktop/sih/About.html"> <b class="about-us">About us</b></a>
+
+        </div>
+      </div>
+      <div class="where-to-dipose-inner2">
+        <div class="rectangle-parent2">
+          <div class="group-inner"></div>
+          <div class="home-wrapper">
+           <a href="file:///C:/Users/kamal/Desktop/sih/Home.html"> <b class="contact">Home</b></a>
+          </div>
+        </div>
+      </div>
+      <div class="where-to-dipose-child1">
+
+        <iframe src="https://my.atlist.com/map/1ce1bb5a-f784-408a-b6af-39ffa15fef1a?marker_id=6bc478d2-1d0d-4b5b-abc7-59b65af89486" width="800" height="600" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <script>
+      var vITCHENNAIText = document.getElementById("vITCHENNAIText");
+      if (vITCHENNAIText) {
+        vITCHENNAIText.addEventListener("click", function () {
+          window.open(
+            "https://www.google.com/maps/place/631,+Jalan+Lima,+Chan+Sow+Lin,+55200+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur/@3.1155091,101.7120578,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc3606eb6903d1:0x72b05c4a71aefe6e!8m2!3d3.1155091!4d101.7142465!16s%2Fg%2F11kxj2fss1"
+          );
+        });
+      }
+      
+      var eWateRecyclingText = document.getElementById("eWateRecyclingText");
+      if (eWateRecyclingText) {
+        eWateRecyclingText.addEventListener("click", function () {
+          var anchor = document.querySelector(
+            "[data-scroll-to='dISPOSALLOCATIONText']"
+          );
+          if (anchor) {
+            anchor.scrollIntoView({ block: "start", behavior: "smooth" });
+          }
+        });
+      }
+      </script>
+  </body>
+</html>

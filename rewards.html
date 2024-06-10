@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-threeD@1.0.0"></script>
+    <style>
+        
+        #input-container {
+            margin: 20px auto;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 200px;
+        }
+        #chart-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        #pie-chart-container {
+            max-width: 400px;
+        }
+        #credit-points {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px; 
+        }
+        
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .button {
+            width:80px; 
+            height: 40px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        
+        .product-buttons {
+            display: none;
+            flex-direction: column;
+            margin-top: 5px;
+        }
+
+        .product-button {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #ffcc00; 
+            color: #000; /* Set text color to black */
+            border: 1px solid #ffcc00; /* Match the border color with the background color */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-button:hover {
+            background-color: #ffaa00;
+        }
+
+        .body{
+            background-color: rgb(143, 230, 143);
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="excelFile" accept=".xlsx">
+    <input type="text" id="searchTerm" placeholder="search item">
+    <button onclick="searchInExcel()">.</button>
+    <div id="result"></div>
+
+    <div class="button-container">
+        <!-- Smartphone Category -->
+        <div class="button" id="smartphone-button" onclick="toggleProductButtons('smartphone-products')">Smartphone</div>
+        <div class="product-buttons" id="smartphone-products">
+            <div class="product-button" onclick="displayProductName(this)">iPhone 13 Pro Max</div>
+            <div class="product-button" onclick="displayProductName(this)">Samsung Galaxy S22 Ultra</div>
+            <div class="product-button" onclick="displayProductName(this)">Google Pixel 6 Pro</div>
+        </div>
+
+        <!-- Laptop Category -->
+        <div class="button" id="laptop-button" onclick="toggleProductButtons('laptop-products')">Laptop</div>
+        <div class="product-buttons" id="laptop-products">
+            <div class="product-button" onclick="displayProductName(this)">MacBook Air (2022)</div>
+            <div class="product-button" onclick="displayProductName(this)">Dell XPS 13 (2022)</div>
+        </div>
+
+        <!-- Television Category -->
+        <div class="button" id="television-button" onclick="toggleProductButtons('television-products')">Television</div>
+        <div class="product-buttons" id="television-products">
+            <div class="product-button" onclick="displayProductName(this)">Samsung QN90A Neo QLED TV</div>
+            <div class="product-button" onclick="displayProductName(this)">LG C1 OLED TV</div>
+        </div>
+
+        <!-- Console Category -->
+        <div class="button" id="console-button" onclick="toggleProductButtons('console-products')">Console</div>
+        <div class="product-buttons" id="console-products">
+            <div class="product-button" onclick="displayProductName(this)">PlayStation 5</div>
+            <div class="product-button" onclick="displayProductName(this)">Xbox Series X</div>
+            <div class="product-button" onclick="displayProductName(this)">Nintendo Switch OLED</div>
+        </div>
+
+        <!-- Smart Speaker Category -->
+        <div class="button" id="smart-speaker-button" onclick="toggleProductButtons('smart-speaker-products')">Smart Speaker</div>
+        <div class="product-buttons" id="smart-speaker-products">
+            <div class="product-button" onclick="displayProductName(this)">Amazon Echo Dot (4th Gen)</div>
+            <div class="product-button" onclick="displayProductName(this)">Google Nest Mini (2nd Gen)</div>
+        </div>
+
+        <!-- Smartwatch Category -->
+        <div class="button" id="smartwatch-button" onclick="toggleProductButtons('smartwatch-products')">Smartwatch</div>
+        <div class="product-buttons" id="smartwatch-products">
+            <div class="product-button" onclick="displayProductName(this)">Apple Watch Series 7</div>
+            <div class="product-button" onclick="displayProductName(this)">Samsung Galaxy Watch 4</div>
+        </div>
+
+        <!-- Fitness Tracker Category -->
+        <div class="button" id="fitness-tracker-button" onclick="toggleProductButtons('fitness-tracker-products')">Fitness Tracker</div>
+        <div class="product-buttons" id="fitness-tracker-products">
+            <div class="product-button" onclick="displayProductName(this)">Fitbit Charge 5</div>
+            <div class="product-button" onclick="displayProductName(this)">Garmin Forerunner 255</div>
+        </div>
+
+                <!-- Tablet Category -->
+                <div class="button" id="tablet-button" onclick="toggleProductButtons('tablet-products')">Tablet</div>
+                <div class="product-buttons" id="tablet-products">
+                    <div class="product-button" onclick="displayProductName(this)">iPad Pro (2022)</div>
+                    <div class="product-button" onclick="displayProductName(this)">Microsoft Surface Pro 8</div>
+                </div>
+        
+                <!-- E-reader Category -->
+                <div class="button" id="e-reader-button" onclick="toggleProductButtons('e-reader-products')">E-reader</div>
+                <div class="product-buttons" id="e-reader-products">
+                    <div class="product-button" onclick="displayProductName(this)">Amazon Kindle Paperwhite (11th Gen)</div>
+                </div>
+            </div>
+        
+            <div id="input-container">
+                <label for="data-input">[gold,silver,copper]</label>
+                <input type="text" id="data-input" placeholder="values display">
+                <br>
+                <button id="calculate">diagram</button>
+            </div>
+        
+            <div id="chart-container">
+                <div id="pie-chart-container"></div>
+                <div id="credit-points">Total Credits: 0</div>
+            </div>
+        
+            <script>
+               const creditPointsElement = document.getElementById('credit-points');
+            const pieData = [
+                { label: 'Gold', value: 0 },
+                { label: 'Silver', value: 0 },
+                { label: 'Copper', value: 0 }
+            ];
+    
+            const colorScale = d3.scaleOrdinal()
+                .domain(['Gold', 'Silver', 'Copper'])
+                .range(['#FFD700', '#C0C0C0', '#B5651D']); // Custom colors for Gold, Silver, Copper
+    
+            const updatePieChart = () => {
+                const width = 400;
+                const height = 400;
+                const radius = Math.min(width, height) / 2;
+    
+                const svg = d3.select('#pie-chart-container')
+                    .selectAll('svg')
+                    .data([pieData])
+                    .join('svg')
+                    .attr('width', width)
+                    .attr('height', height)
+                    .append('g')
+                    .attr('transform', `translate(${width / 2},${height / 2})`);
+    
+                const pie = d3.pie()
+                    .value(d => d.value) // Use the 'value' property for pie slices
+    
+                const arc = d3.arc()
+                    .outerRadius(radius - 10)
+                    .innerRadius(0);
+    
+                const pieChart = svg.selectAll('.arc')
+                    .data(pie(pieData))
+                    .enter()
+                    .append('g')
+                    .attr('class', 'arc');
+    
+                pieChart.append('path')
+                    .attr('d', arc)
+                    .attr('fill', (d, i) => colorScale(d.data.label)); // Use 'label' property for colors
+    
+                pieChart.append('text')
+                    .attr('transform', d => `translate(${arc.centroid(d)})`)
+                    .attr('dy', '0.35em')
+                    .text(d => d.data.label);
+    
+                svg.selectAll('.arc').exit().remove();
+            };
+    
+            function calculateCredits() {
+                const inputData = document.getElementById('data-input').value;
+                const inputDataArray = inputData.split(',').map(value => value.trim());
+
+// Initialize weights to 0
+let goldWeight = 0;
+let silverWeight = 0;
+let copperWeight = 0;
+
+// Calculate total credits based on entered values
+for (let i = 0; i < inputDataArray.length; i++) {
+    const weight = parseFloat(inputDataArray[i]) || 0;
+    if (i === 0) {
+        goldWeight = weight;
+    } else if (i === 1) {
+        silverWeight = weight;
+    } else if (i === 2) {
+        copperWeight = weight;
+    }
+}
+
+// Calculate total credits using the provided logic
+const totalCredits = (((goldWeight/0.001) * 100)+ ((silverWeight/0.001) * 10) + (copperWeight/0.001));
+
+// Update the pie chart and credit points display
+pieData[0].value = goldWeight;
+pieData[1].value = silverWeight;
+pieData[2].value = copperWeight;
+
+updatePieChart();
+creditPointsElement.textContent = `Total Credits: ${totalCredits}`;
+}
+
+function searchInExcel() {
+const fileInput = document.getElementById('excelFile');
+const searchTerm = document.getElementById('searchTerm').value.toUpperCase();
+const resultDiv = document.getElementById('result');
+
+if (!searchTerm) {
+    resultDiv.innerText = 'Please enter a search term.';
+    return;
+}
+
+const file = fileInput.files[0];
+if (!file) {
+    resultDiv.innerText = 'Please select an Excel file.';
+    return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function (e) {
+    const data = new Uint8Array(e.target.result);
+    const workbook = XLSX.read(data, { type: 'array' });
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+    for (let i = 1; ; i++) {
+        const cell = sheet['A' + i];
+        if (!cell) break;
+
+        const cellValue = cell.v.toString().toUpperCase();
+
+        if (cellValue.includes(searchTerm)) {
+            resultDiv.innerText = `Found in row ${i}: ${cellValue}`;
+            const target = sheet['C' + i];
+            const targetValue = target ? target.v : 'N/A';
+            
+            // Pass the found value to the credit calculator
+            document.getElementById('data-input').value = targetValue;
+            calculateCredits();
+            return;
+        }
+    }
+
+    // If the search term is not found
+    resultDiv.innerText = 'Search term not found in column A.';
+};
+
+reader.readAsArrayBuffer(file);
+}
+
+// Function to toggle the visibility of product buttons for a category
+function toggleProductButtons(categoryId) {
+const productButtons = document.getElementById(categoryId);
+productButtons.style.display = (productButtons.style.display === 'block') ? 'none' : 'block';
+}
+
+// Function to display the name of the clicked product button
+function displayProductName(button) {
+const searchTerm = button.textContent; // Use the button text as the search term
+document.getElementById('searchTerm').value = searchTerm;
+searchInExcel(); // Trigger the Excel search function
+}
+</script>
+        </body>
+        </html>
+        
